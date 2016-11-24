@@ -1,0 +1,17 @@
+{
+  "name": "middleground",
+  "version": "1.0.0",
+  "description": "Gulp WorkFlow For The New MiddleGround Of HTD",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Colin Wang",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-uglify": "^2.0.0"
+  }
+}

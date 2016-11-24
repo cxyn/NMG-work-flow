@@ -1,0 +1,10 @@
+@charset "utf-8";
+$bgColor: #555;
+body{
+	background-color: $bgColor;
+}
+.demo {
+	color: #fff;
+	text-align: center;
+	padding: 30px 0;
+}
