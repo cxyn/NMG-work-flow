@@ -3,12 +3,14 @@
  *  @author : GeBi Lao Wang （An Old Driver）
  *  @Date : 2016-11-11
  */
-var gulp        = require('gulp'),
-    browserSync = require('browser-sync').create()
-    uglify      = require('gulp-uglify'),
-    sass      = require('gulp-sass'),
-    reload      = browserSync.reload,
-    config      = require('./config.json');
+var gulp          = require('gulp'),
+    browserSync   = require('browser-sync').create()
+    uglify        = require('gulp-uglify'),
+    sass          = require('gulp-sass'),
+    autoprefixer  = require('gulp-autoprefixer'),
+    reload        = browserSync.reload,
+    config        = require('./config.json'),
+    plumber       = require('gulp-plumber');
 
 // 代理
 // gulp.task('server', function() {
@@ -29,7 +31,13 @@ gulp.task('serve', ['sass'], function() {
 // scss编译后的css将注入到浏览器里实现更新
 gulp.task('sass', function() {
     return gulp.src(config.src.sass_path + '*.scss')
-        .pipe(sass())
+        .pipe(plumber({
+            errorHandler: function(err) {
+            console.log(err);
+            this.emit('end') }
+        }))
+        .pipe(autoprefixer({browsers: ['last 30 version']}))
+        .pipe(sass({outputStyle: 'expanded'}))
         .pipe(gulp.dest(config.src.css_path))
         .pipe(reload({stream: true}));
 });
