@@ -13,14 +13,14 @@ var gulp          = require('gulp'),
     plumber       = require('gulp-plumber');
 
 // 代理
-// gulp.task('server', function() {
+// gulp.task('server', ()=> {
 //     browserSync.init({
 //         proxy: "域名orIP"
 //     });
 // });
 
 // 初始化静态服务器 + 监听 scss/html 文件
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass'], ()=> {
     browserSync.init({
         server: config.server_path
     });
@@ -29,29 +29,29 @@ gulp.task('serve', ['sass'], function() {
 });
 
 // scss编译后的css将注入到浏览器里实现更新
-gulp.task('sass', function() {
+gulp.task('sass', ()=> {
     return gulp.src(config.src.sass_path + '*.scss')
         .pipe(plumber({
             errorHandler: function(err) {
             console.log(err);
             this.emit('end') }
         }))
-        .pipe(autoprefixer({browsers: ['last 30 version']}))
+        .pipe(autoprefixer({browsers: ['last 5 version']}))
         .pipe(sass({outputStyle: 'expanded'}))
         .pipe(gulp.dest(config.src.css_path))
         .pipe(reload({stream: true}));
 });
 
 //压缩javascript 文件，压缩后文件放入build/js下   
-gulp.task('minifyjs',function(){
+gulp.task('minifyjs', ()=> {
     gulp.src(config.src.js_path + '*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('build/js/min'))
+    .pipe(gulp.dest('dist/js/'))
 });
 
 
 //默认任务
-gulp.task('default',['serve'],function() {
+gulp.task('default',['serve'], ()=> {
   console.log('The workflow of HTD is running! (Enjoy fucking HTD)');
 });
 

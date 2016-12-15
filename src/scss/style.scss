@@ -1,5 +1,5 @@
 @charset "utf-8";
-$bgColor: #555;
+$bgColor: #999;
 body{
 	background-color: $bgColor;
 }
@@ -7,4 +7,5 @@ body{
 	color: #fff;
 	text-align: center;
 	padding: 30px 0;
+	transform: rotate(10deg);
 }

@@ -1,10 +1,10 @@
 {
     "project" : "NMG",     
-    "server_path" : "app/",
+    "server_path" : "src/",
     "src": {
-        "html_path" : "app/",
-        "sass_path" : "app/scss/",
-        "css_path"  : "app/style/",
-        "js_path"   : "app/js/"
+        "html_path" : "src/",
+        "sass_path" : "src/scss/",
+        "css_path"  : "src/style/",
+        "js_path"   : "src/js/"
     }
 } 
